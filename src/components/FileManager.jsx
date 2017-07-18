@@ -50,7 +50,6 @@ class FileManager extends Component {
                     change={this.dataChanged}
                     className="Inline-edit"
                   />
-                  <i class="fa fa-pencil pull-right"></i>
                 </td>
                 <td>
                   <InlineEdit
