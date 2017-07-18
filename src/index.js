@@ -4,6 +4,7 @@ import { Router, Route, Switch } from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import MainApp from './components/MainApp';
+import './index.css';
 
 const history = createBrowserHistory();
 
