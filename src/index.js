@@ -12,7 +12,6 @@ ReactDOM.render(
   <Router path="/" history={ history }>
     <Switch>
       <Route path="/" component={ MainApp } />
-      <Route path="/app" component={ MainApp } />
     </Switch>
   </Router>, document.getElementById('root')
 );
