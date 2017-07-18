@@ -6,7 +6,8 @@ class FileManager extends Component {
     super(props);
     this.dataChanged = this.dataChanged.bind(this);
     this.state = {
-      message: 'ReactInline demo'
+      message: 'ReactInline demo',
+      message2: 'ReactInline demo',
     }
   }
 
@@ -49,8 +50,18 @@ class FileManager extends Component {
                     change={this.dataChanged}
                     className="Inline-edit"
                   />
+                  <i class="fa fa-pencil pull-right"></i>
                 </td>
-                <td>This document is awesome</td>
+                <td>
+                  <InlineEdit
+                    validate={this.customValidateText}
+                    activeClassName="editing"
+                    text={this.state.message2}
+                    paramName="message2"
+                    change={this.dataChanged}
+                    className="Inline-edit"
+                  />
+                </td>
                 <td>Tag1, Tag2, Tag3</td>
                 <td>Yesterday</td>
                 <td>Today</td>
