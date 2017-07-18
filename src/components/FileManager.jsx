@@ -1,6 +1,27 @@
 import React, { Component } from 'react';
+import InlineEdit from 'react-edit-inline';
 
 class FileManager extends Component {
+  constructor(props){
+    super(props);
+    this.dataChanged = this.dataChanged.bind(this);
+    this.state = {
+      message: 'ReactInline demo'
+    }
+  }
+
+  dataChanged(data) {
+    // data = { description: "New validated text comes here" }
+    // Update your model from here
+    console.log(data)
+    this.setState({...data})
+  }
+
+  customValidateText(text) {
+    return (text.length > 0 && text.length < 64);
+  }
+
+
   render() {
     return(
       <div>
@@ -19,7 +40,16 @@ class FileManager extends Component {
             <tbody>
               <tr>
                 <td>10001</td>
-                <td>Document 1</td>
+                <td>
+                  <InlineEdit
+                    validate={this.customValidateText}
+                    activeClassName="editing"
+                    text={this.state.message}
+                    paramName="message"
+                    change={this.dataChanged}
+                    className="Inline-edit"
+                  />
+                </td>
                 <td>This document is awesome</td>
                 <td>Tag1, Tag2, Tag3</td>
                 <td>Yesterday</td>
