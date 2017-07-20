@@ -14,12 +14,12 @@ Specifications
 
 Technical requirements
 - Code to be hosted in this repository. -easy
-- Include instructions on running the code locally in a README.md file. - done
-- Use ES6 syntax. -done
-- Use mock data for Folders and Documents. You may mock the data in a way you are comfortable with; done
-- we expect it to be Promise-based for API-related mocks. -Sample mock data shared at the bottom of this section.
-- Include client-side input and form validation where applicable. -done
-- Bundle with webpack (rollup or any other tools).
-- Proper code structure required. -- done
+- we expect it to be Promise-based for API-related mocks.
 - Proper comments/docblocks required.
+- Bundle with webpack (rollup or any other tools).
 - Proper ESlint required. -- done setup, not ran.
+- Include instructions on running the code locally in a README.md file. - done
+- Use mock data for Folders and Documents. You may mock the data in a way you are comfortable with; Sample mock data shared at the bottom of this section. done
+- Use ES6 syntax. -done
+- Include client-side input and form validation where applicable. -done
+- Proper code structure required. -- done

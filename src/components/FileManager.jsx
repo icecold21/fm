@@ -22,6 +22,113 @@ class FileManager extends Component {
     return (text.length > 0 && text.length < 64);
   }
 
+  mockListResources(){
+    return {
+        "user_id": "12345",
+        "user_first_name": "Sexy",
+        "user_last_name": "Lexy",
+        "folders":
+          [
+              {
+                  "id": "10001",
+                  "files_count": 1,
+                  "name": "Folder 1",
+                  "description": "This folder is awesome!",
+                  "created_at": "2017-07-05 09:35:40",
+                  "updated_at": "2017-07-05 09:35:40"
+              }
+          ],
+        "documents":
+            [
+                {
+                    "id": "10001",
+                    "name": "Document 1",
+                    "content": "I am Document 1",
+                    "created_at": "2017-07-05 09:35:40",
+                    "updated_at": "2017-07-05 09:35:40",
+                    "tags": [{ "id": "100001", "name": "tag 1" } ]
+                }
+            ]
+    }
+  }
+
+  mockFolderData() {
+    return {
+      "id": "10001",
+      "files_count": 1,
+      "name": "Folder 1",
+      "description": "This folder is awesome!",
+      "created_at": "2017-07-05 09:35:40",
+      "updated_at": "2017-07-05 09:35:40",
+      "documents":
+          [
+              {
+                  "id": "10001",
+                  "name": "Document 1",
+                  "content": "I am Document 1",
+                  "created_at": "2017-07-05 09:35:40",
+                  "updated_at": "2017-07-05 09:35:40",
+                  "tags": [{ "id": "100001", "name": "tag 1" } ]
+
+              }
+          ]
+  }
+  }
+
+  mockListResources(){
+    return {
+        "user_id": "12345",
+        "user_first_name": "Sexy",
+        "user_last_name": "Lexy",
+        "folders":
+          [
+              {
+                  "id": "10001",
+                  "files_count": 1,
+                  "name": "Folder 1",
+                  "description": "This folder is awesome!",
+                  "created_at": "2017-07-05 09:35:40",
+                  "updated_at": "2017-07-05 09:35:40"
+              }
+          ],
+        "documents":
+            [
+                {
+                    "id": "10001",
+                    "name": "Document 1",
+                    "content": "I am Document 1",
+                    "created_at": "2017-07-05 09:35:40",
+                    "updated_at": "2017-07-05 09:35:40",
+                    "tags": [{ "id": "100001", "name": "tag 1" } ]
+                }
+            ]
+    }
+  }
+
+  get(url) {
+    // Return a new promise.
+    return new Promise(function(resolve, reject) {
+      var req = new XMLHttpRequest();
+      req.open('GET', url);
+
+
+      req.onload = function() {
+        if(url.includes('api/list_resources')) {
+          resolve(this.mockListResources());
+        } else {
+          resolve(this.mockFolderData());
+        }
+      };
+
+      // Handle network errors
+      req.onerror = function() {
+        reject(Error("Network Error"));
+      };
+
+      // Make the request
+      req.send();
+    });
+  }
 
   render() {
     return(
