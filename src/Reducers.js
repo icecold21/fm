@@ -3,10 +3,11 @@
 // root reducer combines many reducer into single one database,
 // table are stored in reducer folder
 // semua reducer taruh sini
+// action hal yg dilakukan yg menyebabkan perubahaan terhadap data di store
 
 
 import { combineReducers } from 'redux';
-import FileManagerReducer from './reducer/FileManagerReducer';
+import FileManagerReducer from './reducers/FileManagerReducer';
 
 const rootReducer = combineReducers({
   FileManagerReducer: FileManagerReducer

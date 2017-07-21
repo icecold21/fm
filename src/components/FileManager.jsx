@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import FolderRow from './FolderRow';
 import FileRow from './FileRow';
+import { connect } from 'react-redux'; // connect react component ke action & reducer
+
+import { fetchRootResponseData } from '../actions/FileManagerAction';
 
 class FileManager extends Component {
   constructor(props){
@@ -22,6 +25,12 @@ class FileManager extends Component {
 
   customValidateText(text) {
     return (text.length > 0 && text.length < 64);
+  }
+
+  componentWillMount() {
+    // panggil action disini, sebelum mount- check react lifecycle event
+    // jadi immutable
+    this.props.fetchRootResponseData()
   }
 
   // mockListResources(){
@@ -136,4 +145,13 @@ class FileManager extends Component {
   }
 }
 
-export default FileManager;
+// dari state reducer
+const mapStateToProps = (state) => ({
+});
+
+// dari actions, stlh di link jd props
+const mapDispatchToProps = (dispatch) => ({
+  fetchRootResponseData: () => dispatch(fetchRootResponseData())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FileManager)
