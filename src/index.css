@@ -29,12 +29,12 @@
   box-shadow: -4px 5px 29px -1px rgb(204, 204, 204);
 }
 
-.App-folder-container{
+.App-folder-container, .App-file-container{
   display: inline-block;
   margin-right: 1em;
 }
 
-.App-folder{
+.App-folder, .App-file{
   width: 5em;
   height: 5em;
   background: #bbb;

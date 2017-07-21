@@ -10,7 +10,7 @@ export default class Folder extends Component {
 
   render(){
     return(
-      <div className='App-folder-container'>
+      <div className='App-folder-container' onClick={()=>this.props.handleClick(this.props.data, "Folder")}>
         <div className='App-folder Box-shadow'/>
         <div> {this.props.data.name} </div>
       </div>

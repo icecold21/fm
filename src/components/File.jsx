@@ -4,39 +4,16 @@ import InlineEdit from 'react-edit-inline';
 export default class File extends Component {
   constructor(props){
     super(props);
-
     this.state = {
     }
   }
 
   render(){
     return(
-      <tr>
-        <td>10001</td>
-        <td>
-          <InlineEdit
-            validate={this.customValidateText}
-            activeClassName="editing"
-            text="Hardcode"
-            paramName="message"
-            change={this.dataChanged}
-            className="Inline-edit"
-          />
-        </td>
-        <td>
-          <InlineEdit
-            validate={this.customValidateText}
-            activeClassName="editing"
-            text="Hardcode"
-            paramName="message2"
-            change={this.dataChanged}
-            className="Inline-edit"
-          />
-        </td>
-        <td>Tag1, Tag2, Tag3</td>
-        <td>Yesterday</td>
-        <td>Today</td>
-      </tr>
+      <div className='App-file-container' onClick={()=>this.props.handleClick(this.props.data, "File")}>
+        <div className='App-file Box-shadow'/>
+        <div> {this.props.data.name} </div>
+      </div>
     )
   }
 }

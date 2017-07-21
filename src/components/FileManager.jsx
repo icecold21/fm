@@ -9,20 +9,17 @@ import { fetchRootResponseData } from '../actions/FileManagerAction';
 class FileManager extends Component {
   constructor(props){
     super(props);
-    this.dataChanged = this.dataChanged.bind(this);
+
     this.state = {
+      metadata: null
     }
   }
 
-  dataChanged(data) {
-    // data = { description: "New validated text comes here" }
-    // Update your model from here
-    console.log(data)
-    this.setState({...data})
-  }
-
-  customValidateText(text) {
-    return (text.length > 0 && text.length < 64);
+  changeMetadata = (data, type) => {
+    data.type = type
+    this.setState({
+      metadata : data
+    })
   }
 
   componentWillMount() {
@@ -38,21 +35,26 @@ class FileManager extends Component {
           <div>
             <h3>Folders</h3><hr />
             {
-              this.props.folders.map((folder,index)=>{
-                console.log(folder)
+              this.props.folders.map((folder, index)=>{
                 return(
-                  <Folder data={folder}/>
+                  <Folder data={ folder } handleClick={this.changeMetadata} key={index}/>
                 )
               })
             }
-
           </div>
           <br />
           <div>
             <h3>Files</h3><hr />
+            {
+              this.props.files.map((file, index)=>{
+                return(
+                  <File data={ file } handleClick={this.changeMetadata} key={index}/>
+                )
+              })
+            }
           </div>
         </div>
-        <Metadata />
+        <Metadata data={this.state.metadata}/>
       </div>
     )
   }
