@@ -1,6 +1,6 @@
 // reducer terima initial state & action, reducer are pure functions
 
-import { FETCH_ROOT_SUCCESS } from '../actions/FileManagerAction';
+import { FETCH_ROOT_SUCCESS, UPDATE_NAME } from '../actions/FileManagerAction';
 
 const initialState = {
   files: [],
@@ -15,7 +15,12 @@ const FileManagerReducer = (state=initialState, action) => {
         files: action.payload.documents,
         folders: action.payload.folders
       }
-  }
+    case UPDATE_NAME:
+      return {
+        ...state,
+        [action.payload.types] : action.payload.updatedData
+      }
+    }
   return state;
 };
 

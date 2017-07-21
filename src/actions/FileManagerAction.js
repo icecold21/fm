@@ -4,6 +4,7 @@
 // getState untuk mengakses reducer
 
 export const FETCH_ROOT_SUCCESS = 'FETCH_ROOT_SUCCESS';
+export const UPDATE_NAME = 'UPDATE_NAME';
 
 export const fetchRootResponseData = () => {
   return (dispatch, getState) => {
@@ -20,6 +21,17 @@ export const fetchRootResponseData = () => {
     .catch((error) => {
       // reject();
     });
+  }
+}
+
+export const updateName = (type, updatedData) => {
+  let newTypes = type === "Folder" ? "folders" : "files"
+  return {
+    type: UPDATE_NAME,
+    payload: {
+      types : newTypes,
+      updatedData
+    }
   }
 }
 

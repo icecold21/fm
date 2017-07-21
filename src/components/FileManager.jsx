@@ -11,7 +11,8 @@ class FileManager extends Component {
     super(props);
 
     this.state = {
-      metadata: null
+      metadata: null,
+      key: 0
     }
   }
 
@@ -19,6 +20,13 @@ class FileManager extends Component {
     data.type = type
     this.setState({
       metadata : data
+    })
+  }
+
+  afterChangeName = (data) => {
+    this.setState({
+      metadata: data,
+      key: this.state.key++
     })
   }
 
@@ -30,7 +38,7 @@ class FileManager extends Component {
 
   render() {
     return(
-      <div>
+      <div key={this.state.key}>
         <div className='File-folder-view'>
           <div>
             <h3>Folders</h3><hr />
@@ -54,7 +62,7 @@ class FileManager extends Component {
             }
           </div>
         </div>
-        <Metadata data={this.state.metadata}/>
+        <Metadata data={this.state.metadata} afterChange={this.afterChangeName}/>
       </div>
     )
   }
