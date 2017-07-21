@@ -3,7 +3,8 @@
 import { FETCH_ROOT_SUCCESS } from '../actions/FileManagerAction';
 
 const initialState = {
-  rootData: {}
+  files: [],
+  folders: []
 };
 
 const FileManagerReducer = (state=initialState, action) => {
@@ -11,7 +12,8 @@ const FileManagerReducer = (state=initialState, action) => {
     case FETCH_ROOT_SUCCESS:
       return {
         ...state,
-        rootData: action.payload
+        files: action.payload.documents,
+        folders: action.payload.folders
       }
   }
   return state;

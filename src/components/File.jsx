@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import InlineEdit from 'react-edit-inline';
 
-export default class FileRow extends Component {
+export default class File extends Component {
   constructor(props){
     super(props);
 

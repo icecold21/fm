@@ -10,9 +10,9 @@ export default function configureStore(initialState, middleware) {
     const logger = createLogger()
 
     const store = createStore(
-        rootReducer,
-        initialState,
-        applyMiddleware(thunk, sagaMiddleware, logger)
+      rootReducer,
+      initialState,
+      applyMiddleware(thunk, sagaMiddleware, logger)
     )
 
     store.runSaga = sagaMiddleware.run

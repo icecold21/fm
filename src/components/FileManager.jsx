@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import FolderRow from './FolderRow';
-import FileRow from './FileRow';
+import Folder from './Folder';
+import File from './File';
+import Metadata from './Metadata';
 import { connect } from 'react-redux'; // connect react component ke action & reducer
 
 import { fetchRootResponseData } from '../actions/FileManagerAction';
@@ -10,9 +11,6 @@ class FileManager extends Component {
     super(props);
     this.dataChanged = this.dataChanged.bind(this);
     this.state = {
-      pageData: this.mockListResources(),
-      folders: [],
-      files: []
     }
   }
 
@@ -33,113 +31,28 @@ class FileManager extends Component {
     this.props.fetchRootResponseData()
   }
 
-  // mockListResources(){
-  //   return {
-  //       "user_id": "12345",
-  //       "user_first_name": "Sexy",
-  //       "user_last_name": "Lexy",
-  //       "folders":
-  //         [
-  //             {
-  //                 "id": "10001",
-  //                 "files_count": 1,
-  //                 "name": "Folder 1",
-  //                 "description": "This folder is awesome!",
-  //                 "created_at": "2017-07-05 09:35:40",
-  //                 "updated_at": "2017-07-05 09:35:40"
-  //             }
-  //         ],
-  //       "documents":
-  //           [
-  //               {
-  //                   "id": "10001",
-  //                   "name": "Document 1",
-  //                   "content": "I am Document 1",
-  //                   "created_at": "2017-07-05 09:35:40",
-  //                   "updated_at": "2017-07-05 09:35:40",
-  //                   "tags": [{ "id": "100001", "name": "tag 1" } ]
-  //               }
-  //           ]
-  //   }
-  // }
-
-  mockFolderData() {
-    return {
-      "id": "10001",
-      "files_count": 1,
-      "name": "Folder 1",
-      "description": "This folder is awesome!",
-      "created_at": "2017-07-05 09:35:40",
-      "updated_at": "2017-07-05 09:35:40",
-      "documents":
-          [
-              {
-                  "id": "10001",
-                  "name": "Document 1",
-                  "content": "I am Document 1",
-                  "created_at": "2017-07-05 09:35:40",
-                  "updated_at": "2017-07-05 09:35:40",
-                  "tags": [{ "id": "100001", "name": "tag 1" } ]
-
-              }
-          ]
-  }
-  }
-
-  mockListResources(){
-    new Promise(function(resolve, reject) {
-      // A mock async action using setTimeout
-      setTimeout(function() { resolve({
-            "user_id": "12345",
-            "user_first_name": "Sexy",
-            "user_last_name": "Lexy",
-            "folders":
-              [
-                  {
-                      "id": "10001",
-                      "files_count": 1,
-                      "name": "Folder 1",
-                      "description": "This folder is awesome!",
-                      "created_at": "2017-07-05 09:35:40",
-                      "updated_at": "2017-07-05 09:35:40"
-                  }
-              ],
-            "documents":
-                [
-                    {
-                        "id": "10001",
-                        "name": "Document 1",
-                        "content": "I am Document 1",
-                        "created_at": "2017-07-05 09:35:40",
-                        "updated_at": "2017-07-05 09:35:40",
-                        "tags": [{ "id": "100001", "name": "tag 1" } ]
-                    }
-                ]
-        }); }, 3000);
-    })
-  }
-
   render() {
     return(
       <div>
-        <div className="table-responsive" >
-          <table className="table table-hover">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Tags</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-              </tr>
-            </thead>
-            <tbody>
-              <FileRow />
-              <FileRow />
-            </tbody>
-          </table>
+        <div className='File-folder-view'>
+          <div>
+            <h3>Folders</h3><hr />
+            {
+              this.props.folders.map((folder,index)=>{
+                console.log(folder)
+                return(
+                  <Folder data={folder}/>
+                )
+              })
+            }
+
+          </div>
+          <br />
+          <div>
+            <h3>Files</h3><hr />
+          </div>
         </div>
+        <Metadata />
       </div>
     )
   }
@@ -147,6 +60,8 @@ class FileManager extends Component {
 
 // dari state reducer
 const mapStateToProps = (state) => ({
+  folders: state.FileManagerReducer.folders,
+  files: state.FileManagerReducer.files
 });
 
 // dari actions, stlh di link jd props
@@ -154,4 +69,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchRootResponseData: () => dispatch(fetchRootResponseData())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FileManager)
+export default connect(mapStateToProps, mapDispatchToProps)(FileManager);
