@@ -1,12 +1,15 @@
 export const FETCH_ROOT_SUCCESS = 'FETCH_ROOT_SUCCESS';
 export const UPDATE_NAME = 'UPDATE_NAME';
 
+/*
+ * A function returning promise data.
+ */
 export const fetchRootResponseData = () => {
   return (dispatch) => {
     new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(mockRootData);
-      }, 2000);
+      }, 1200);
     })
       .then((response) => {
         dispatch(fetchRootSuccess(response));
@@ -16,6 +19,10 @@ export const fetchRootResponseData = () => {
   };
 };
 
+
+/*
+ * Updated data builder.
+ */
 export const updateName = (type, updatedData) => {
   let newTypes = type === 'Folder' ? 'folders' : 'files';
   return {
@@ -27,6 +34,9 @@ export const updateName = (type, updatedData) => {
   };
 };
 
+/*
+ * Fetch root success object builder.
+ */
 const fetchRootSuccess = (payload) => {
   return {
     type: FETCH_ROOT_SUCCESS,
@@ -34,6 +44,9 @@ const fetchRootSuccess = (payload) => {
   };
 };
 
+/*
+ * Mock root data.
+ */
 const mockRootData = {
   'user_id': '12345',
   'user_first_name': 'Sexy',
@@ -70,6 +83,10 @@ const mockRootData = {
   ]
 };
 
+
+/*
+ * Mock Folder Data.
+ */
 const mockFolderData = {
   'id': '10001',
   'files_count': 1,

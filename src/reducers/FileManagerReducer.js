@@ -5,6 +5,9 @@ const initialState = {
   folders: []
 };
 
+/*
+ * FileManagerReducer takes previous state and action and return next state of the app.
+ */
 const FileManagerReducer = (state=initialState, action) => {
   switch(action.type) {
   case FETCH_ROOT_SUCCESS:

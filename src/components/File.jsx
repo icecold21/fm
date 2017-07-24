@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import InlineEdit from 'react-edit-inline';
 
+/*
+ * File component. represents a single file.
+ */
 export default class File extends Component {
   constructor(props){
     super(props);

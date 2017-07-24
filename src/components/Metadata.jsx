@@ -12,6 +12,9 @@ class Metadata extends Component {
       }
   }
 
+  /*
+   * Function that handle change name
+   */
   handleChange = (data) => {
     let updatedData = this.props.data.type === "Folder" ? this.props.folders : this.props.files
     let index = _.findIndex(updatedData, {id: this.props.data.id})
@@ -21,6 +24,10 @@ class Metadata extends Component {
     this.props.afterChange(updatedData[index])
   }
 
+
+  /*
+   * Render the meta data component.
+   */
   render() {
     return (
       <div className='App-metadata Box-shadow'>
@@ -58,13 +65,23 @@ class Metadata extends Component {
   }
 }
 
+/*
+ * Map the state to props.
+ */
 const mapStateToProps = (state) => ({
   folders: state.FileManagerReducer.folders,
   files: state.FileManagerReducer.files
 });
 
+/*
+ * Map the dispatch methods to props.
+ */
 const mapDispatchToProps = (dispatch) => ({
   updateName: (type, updatedData) => dispatch(updateName(type, updatedData))
 });
 
+
+/*
+ * Export default & connnect FileManager component to app state.
+ */
 export default connect(mapStateToProps, mapDispatchToProps)(Metadata);

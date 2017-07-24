@@ -10,6 +10,11 @@ import './index.css';
 const store = configureStore();
 const history = createBrowserHistory();
 
+
+/*
+ * Main entry of the react app.
+ * Setup provider and router.
+ */
 ReactDOM.render(
   <Provider store={ store }>
     <Router path="/" history={ history }>

@@ -4,8 +4,11 @@ import createSagaMiddleware, { END } from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../Reducers';
 
-export default function configureStore(initialState, middleware) {
 
+/*
+ * configuring the store of the app.
+ */
+export default function configureStore(initialState, middleware) {
   const sagaMiddleware = createSagaMiddleware();
   const logger = createLogger();
 

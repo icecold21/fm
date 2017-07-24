@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import Folder from './Folder';
 import File from './File';
 import Metadata from './Metadata';
-import { connect } from 'react-redux'; // connect react component to action & reducer
+import { connect } from 'react-redux';
 
 import { fetchRootResponseData } from '../actions/FileManagerAction';
 
 class FileManager extends Component {
+
+  /*
+   * Construct component.
+   */
   constructor(props){
     super(props);
 
@@ -16,6 +20,9 @@ class FileManager extends Component {
     }
   }
 
+  /*
+   * Change metadata info.
+   */
   changeMetadata = (data, type) => {
     data.type = type
     this.setState({
@@ -23,6 +30,9 @@ class FileManager extends Component {
     })
   }
 
+  /*
+   * Set new state after change name.
+   */
   afterChangeName = (data) => {
     this.setState({
       metadata: data,
@@ -30,12 +40,16 @@ class FileManager extends Component {
     })
   }
 
+  /*
+   * Fetch mock data before the component mount.
+   */
   componentWillMount() {
-    // panggil action disini, sebelum mount- check react lifecycle event
-    // jadi immutable
     this.props.fetchRootResponseData()
   }
 
+  /*
+   * Render component.
+   */
   render() {
     return(
       <div key={this.state.key}>
@@ -68,14 +82,23 @@ class FileManager extends Component {
   }
 }
 
+/*
+ * Map the state to props.
+ */
 const mapStateToProps = (state) => ({
   folders: state.FileManagerReducer.folders,
   files: state.FileManagerReducer.files
 });
 
-// From actions, after linked will be accessible as props
+/*
+ * Map the dispatch methods to props.
+ */
 const mapDispatchToProps = (dispatch) => ({
   fetchRootResponseData: () => dispatch(fetchRootResponseData())
 });
 
+
+/*
+ * Export default & connnect FileManager component to app state.
+ */
 export default connect(mapStateToProps, mapDispatchToProps)(FileManager);

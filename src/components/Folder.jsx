@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+/*
+ * Folder Component, represents a single folder
+ */
 export default class Folder extends Component {
   constructor(props){
     super(props);
@@ -7,6 +10,9 @@ export default class Folder extends Component {
     }
   }
 
+  /*
+   * Render the folder component
+   */
   render(){
     return(
       <div className='App-folder-container' onClick={()=>this.props.handleClick(this.props.data, "Folder")}>
