@@ -15,11 +15,8 @@ export const fetchRootResponseData = () => {
     })
       .then((response) => {
         dispatch(fetchRootSuccess(response));
-        console.log('iam here', response);
-
       })
       .catch((error) => {
-        reject({});
       });
   };
 };
