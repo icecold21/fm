@@ -1,5 +1,3 @@
-// reducer terima initial state & action, reducer are pure functions
-
 import { FETCH_ROOT_SUCCESS, UPDATE_NAME } from '../actions/FileManagerAction';
 
 const initialState = {

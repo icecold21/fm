@@ -58,13 +58,11 @@ class Metadata extends Component {
   }
 }
 
-// dari state reducer
 const mapStateToProps = (state) => ({
   folders: state.FileManagerReducer.folders,
   files: state.FileManagerReducer.files
 });
 
-// dari actions, stlh di link jd props
 const mapDispatchToProps = (dispatch) => ({
   updateName: (type, updatedData) => dispatch(updateName(type, updatedData))
 });

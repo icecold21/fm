@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Folder from './Folder';
 import File from './File';
 import Metadata from './Metadata';
-import { connect } from 'react-redux'; // connect react component ke action & reducer
+import { connect } from 'react-redux'; // connect react component to action & reducer
 
 import { fetchRootResponseData } from '../actions/FileManagerAction';
 
@@ -68,13 +68,12 @@ class FileManager extends Component {
   }
 }
 
-// dari state reducer
 const mapStateToProps = (state) => ({
   folders: state.FileManagerReducer.folders,
   files: state.FileManagerReducer.files
 });
 
-// dari actions, stlh di link jd props
+// From actions, after linked will be accessible as props
 const mapDispatchToProps = (dispatch) => ({
   fetchRootResponseData: () => dispatch(fetchRootResponseData())
 });

@@ -1,8 +1,3 @@
-// promise for asynchronous, setelah get panggil reducer
-// big arrow function
-// dispatch utk panggil function lain yg di declare disini
-// getState untuk mengakses reducer
-
 export const FETCH_ROOT_SUCCESS = 'FETCH_ROOT_SUCCESS';
 export const UPDATE_NAME = 'UPDATE_NAME';
 
